@@ -15,7 +15,7 @@ let gradient2: ([CGColor], String) = ([ UIColor(red: CGFloat(0xFF) / 255.0, gree
 let gradient3: ([CGColor], String) = ([ UIColor(red: CGFloat(0xFF) / 255.0, green: CGFloat(0x50) / 255.0, blue: CGFloat(0x9C) / 255.0, alpha: 1.0).cgColor,
                          UIColor(red: CGFloat(0xB7) / 255.0, green: CGFloat(0x00) / 255.0, blue: CGFloat(0x42) / 255.0, alpha: 1.0).cgColor,
                          UIColor(red: CGFloat(0x4B) / 255.0, green: CGFloat(0x00) / 255.0, blue: CGFloat(0x1A) / 255.0, alpha: 1.0).cgColor
-                    ], "oink")
+                    ], "Magenta")
 
 
 let gradient4: ([CGColor], String)  = ([ UIColor(red: CGFloat(0xFF) / 255.0, green: CGFloat(0xED) / 255.0, blue: CGFloat(0x50) / 255.0, alpha: 1.0).cgColor,
