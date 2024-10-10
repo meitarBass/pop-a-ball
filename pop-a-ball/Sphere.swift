@@ -1,7 +1,7 @@
 import UIKit
 import SpriteKit
 
-class Ball: SKSpriteNode {
+class Sphere: SKSpriteNode {
     
     var actualColor: String!
     var currentImage: UIImage!
@@ -16,6 +16,7 @@ class Ball: SKSpriteNode {
     }
     
     var totalMovementDuration: CGFloat = 0.4
+    let MOVEMENT_TIME_DECREASE = 0.015
     
     func setup(text: String) {
         addTextLabel()
@@ -23,7 +24,7 @@ class Ball: SKSpriteNode {
         currentImage = draw(size: size)
         texture = SKTexture(image: currentImage)
         
-        moveBall()
+        moveSphere()
     }
     
     // Function to create the radial gradient texture
@@ -87,13 +88,13 @@ class Ball: SKSpriteNode {
         addChild(shadowLabel)
     }
     
-    func moveBall() {
+    func moveSphere() {
         let moveAction = SKAction.move(by: CGVector(dx: 100, dy: 0), duration: totalMovementDuration)
         let moveForever = SKAction.repeatForever(moveAction)
         run(moveForever)
     }
     
-    func getNewBallDesign() {
+    func getNewSphereDesign() {
         currentImage = draw(size: self.size)
         texture = SKTexture(image: currentImage)
     }
@@ -102,12 +103,21 @@ class Ball: SKSpriteNode {
         currentText = text
     }
     
-    func updateBall() {
+    func updateSphere() {
         self.isHidden = false
-        self.getNewBallDesign()
+        self.getNewSphereDesign()
         
-        if self.totalMovementDuration > 0.2 {
-            self.totalMovementDuration -= 0.05
+        if self.totalMovementDuration > 0.15 {
+            self.totalMovementDuration -= MOVEMENT_TIME_DECREASE
+            self.removeAllActions()
+            let moveAction = SKAction.move(by: CGVector(dx: 100, dy: 0), duration: totalMovementDuration)
+            let moveForever = SKAction.repeatForever(moveAction)
+            run(moveForever)
         }
+    }
+    
+    func animateSphereTapped() {
+        let fadeOut = SKAction.fadeOut(withDuration: 0.3)
+        run(fadeOut)
     }
 }

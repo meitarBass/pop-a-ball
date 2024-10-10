@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  pop-a-ball
-//
-//  Created by Meitar Basson on 08/10/2024.
-//
-
 import UIKit
 
 @main

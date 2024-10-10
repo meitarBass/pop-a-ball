@@ -14,8 +14,9 @@
 		A9C4932D2CB56F8500C56D76 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A9C4932C2CB56F8500C56D76 /* Base */; };
 		A9C4932F2CB56F8600C56D76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9C4932E2CB56F8600C56D76 /* Assets.xcassets */; };
 		A9C493322CB56F8600C56D76 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A9C493312CB56F8600C56D76 /* Base */; };
-		A9C493392CB5700C00C56D76 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C493382CB5700C00C56D76 /* Ball.swift */; };
+		A9C493392CB5700C00C56D76 /* Sphere.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C493382CB5700C00C56D76 /* Sphere.swift */; };
 		A9C4933B2CB6D91500C56D76 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C4933A2CB6D91500C56D76 /* Colors.swift */; };
+		A9C5C8A62CB7E126008D622D /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C5C8A52CB7E126008D622D /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,8 +28,9 @@
 		A9C4932C2CB56F8500C56D76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A9C4932E2CB56F8600C56D76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A9C493312CB56F8600C56D76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A9C493382CB5700C00C56D76 /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
+		A9C493382CB5700C00C56D76 /* Sphere.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sphere.swift; sourceTree = "<group>"; };
 		A9C4933A2CB6D91500C56D76 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		A9C5C8A52CB7E126008D622D /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,8 +70,9 @@
 				A9C4932B2CB56F8500C56D76 /* Main.storyboard */,
 				A9C4932E2CB56F8600C56D76 /* Assets.xcassets */,
 				A9C493302CB56F8600C56D76 /* LaunchScreen.storyboard */,
-				A9C493382CB5700C00C56D76 /* Ball.swift */,
+				A9C493382CB5700C00C56D76 /* Sphere.swift */,
 				A9C4933A2CB6D91500C56D76 /* Colors.swift */,
+				A9C5C8A52CB7E126008D622D /* CustomButton.swift */,
 			);
 			path = "pop-a-ball";
 			sourceTree = "<group>";
@@ -146,8 +149,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9C493392CB5700C00C56D76 /* Ball.swift in Sources */,
+				A9C493392CB5700C00C56D76 /* Sphere.swift in Sources */,
 				A9C4933B2CB6D91500C56D76 /* Colors.swift in Sources */,
+				A9C5C8A62CB7E126008D622D /* CustomButton.swift in Sources */,
 				A9C493282CB56F8500C56D76 /* GameScene.swift in Sources */,
 				A9C4932A2CB56F8500C56D76 /* GameViewController.swift in Sources */,
 				A9C493222CB56F8500C56D76 /* AppDelegate.swift in Sources */,
