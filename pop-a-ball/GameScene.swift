@@ -198,22 +198,20 @@ class GameScene: SKScene {
     }
     
     func resetGameButtonTapped() {
-        for sphere in spheres {
-            sphere.position.x = -100
-            sphere.alpha = 1
-        }
-        
         score = 0
         heartsLeft = 3
         gameOverLabel.isHidden = true
         playAgainButton.isHidden = true
         userClickedThisTurn = false
-        needUpdateLabels = true
+        isGameOver = false
+        needUpdateLabels = false
         
         for sphere in spheres {
             sphere.totalMovementDuration = 0.4
             self.addChild(sphere)
             sphere.moveSphere()
+            sphere.position.x = -100
+            sphere.alpha = 1
         }
     }
 }
