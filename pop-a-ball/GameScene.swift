@@ -9,11 +9,27 @@ class GameScene: SKScene {
     
     let correctBallIndex = 0
     var needUpdateLabels = true
+    var userClickedThisTurn = false
     
     var scoreLabel: SKLabelNode!
     var score = 0 {
         didSet {
             scoreLabel.text = "Score: \(score)"
+        }
+    }
+    
+    var heartsLabel: SKLabelNode!
+    var heartsLeft = 3 {
+        didSet {
+            if heartsLeft == 3 {
+                heartsLabel.text = "❤️❤️❤️"
+            } else if heartsLeft == 2 {
+                heartsLabel.text = "❤️❤️💔"
+            } else if heartsLeft == 1 {
+                heartsLabel.text = "❤️💔💔"
+            } else {
+                heartsLabel.text = "💔💔💔"
+            }
         }
     }
     
@@ -25,7 +41,7 @@ class GameScene: SKScene {
         addBackground()
         addTitleLabel()
         addSpheres()
-        addScoreLabel()
+        addLabels()
     }
     
     func addTitleLabel() {
@@ -49,17 +65,25 @@ class GameScene: SKScene {
         addChild(background)
     }
     
-    func addScoreLabel() {
+    func addLabels() {
         scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
-        scoreLabel.text = "Poppy Sphere"
-        scoreLabel.position = CGPoint(x: 160, y: 72)
+        scoreLabel.text = "Score: 0"
+        scoreLabel.position = CGPoint(x: 136, y: 64)
         scoreLabel.zPosition = 3
         addChild(scoreLabel)
+        
+        heartsLabel = SKLabelNode(fontNamed: "Chalkduster")
+        heartsLabel.text = ""
+        heartsLabel.position = CGPoint(x: 940, y: 64)
+        heartsLabel.zPosition = 3
+        addChild(heartsLabel)
+        
+        heartsLeft = 3
     }
     
     func addSpheres() {
         for i in 1...3 {
-            let ball = Ball(color: .clear, size: CGSize(width: 120, height: 120))
+            let ball = Ball(color: .clear, size: CGSize(width: 100, height: 100))
             ball.position = CGPoint(x: 100, y: 700 - 175 * i)
             ball.setup(text: "Ball\(i)")
             ball.name = "ball\(i)"
@@ -73,10 +97,18 @@ class GameScene: SKScene {
         guard let current = sphere.currentText else { return }
         guard let actual = sphere.actualColor else { return }
         
-        if current == actual {
-            // correct
-        } else {
-            // false
+        if !userClickedThisTurn {
+            if current == actual {
+                // correct
+                score += 1
+                
+                // TODO: Change it to some shrinking animation
+                sphere.isHidden = true
+            } else {
+                // false
+                heartsLeft -= 1
+            }
+            userClickedThisTurn = true
         }
     }
     
@@ -87,7 +119,6 @@ class GameScene: SKScene {
         let location = touch.location(in: self)
         
         for sphere in spheres {
-            print("\(String(describing: sphere.name))")
             if sphere.frame.contains(location) {
                 poppySphere(sphere: sphere)
             }
@@ -100,10 +131,23 @@ class GameScene: SKScene {
             spheres[1].updateTextWith(text: getRandomWrongText(spheres[1].currentText))
             spheres[2].updateTextWith(text: getRandomWrongText(spheres[2].currentText))
             needUpdateLabels = false
+            userClickedThisTurn = false
         }
         
         if spheres[0].position.x > 1300 {
+            for sphere in spheres {
+                sphere.position.x = -100
+                sphere.updateBall()
+            }
+            
+            if !userClickedThisTurn {
+                heartsLeft -= 1
+            }
             needUpdateLabels = true
+        }
+        
+        if heartsLeft == 0 {
+            // TODO: Game over + start new game?
         }
     }
     

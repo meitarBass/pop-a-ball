@@ -63,7 +63,7 @@ class Ball: SKSpriteNode {
     func addTextLabel() {
         textLabel = SKLabelNode(text: currentText)
         textLabel.fontName = "Chalkduster"
-        textLabel.fontSize = 18
+        textLabel.fontSize = 16
         textLabel.horizontalAlignmentMode = .center
         textLabel.verticalAlignmentMode = .center
         textLabel.position = CGPoint(x: 0, y: 0)
@@ -74,7 +74,7 @@ class Ball: SKSpriteNode {
         
         shadowLabel = SKLabelNode(text: currentText)
         shadowLabel.fontName = "Chalkduster"
-        shadowLabel.fontSize = 19
+        shadowLabel.fontSize = 17
         shadowLabel.horizontalAlignmentMode = .center
         shadowLabel.verticalAlignmentMode = .center
         shadowLabel.position = CGPoint(x: 2, y: 2)
@@ -89,16 +89,7 @@ class Ball: SKSpriteNode {
     
     func moveBall() {
         let moveAction = SKAction.move(by: CGVector(dx: 100, dy: 0), duration: totalMovementDuration)
-        let checkPosition = SKAction.run { [weak self] in
-            guard let self = self else { return }
-            if self.position.x > 1300 {
-                self.position.x = -100
-                self.getNewBallDesign()
-            }
-        }
-    
-        let actionSeq = SKAction.sequence([moveAction, checkPosition])
-        let moveForever = SKAction.repeatForever(actionSeq)
+        let moveForever = SKAction.repeatForever(moveAction)
         run(moveForever)
     }
     
@@ -109,5 +100,14 @@ class Ball: SKSpriteNode {
     
     func updateTextWith(text: String) {
         currentText = text
+    }
+    
+    func updateBall() {
+        self.isHidden = false
+        self.getNewBallDesign()
+        
+        if self.totalMovementDuration > 0.2 {
+            self.totalMovementDuration -= 0.05
+        }
     }
 }
